@@ -1,0 +1,39 @@
+.no-auth-btn {
+    background: #2b8651;
+    color: #fff;
+}
+
+.no-auth-btn:hover {
+    background: #fff;
+    color: #2b8651;
+    border: 1px solid #2b8651;
+}
+
+.hero {
+    background-image: url("/images/hero2.jpg");
+    height: 600px;
+    margin-top: 5px;
+}
+
+.search-hero {
+    background-image: url("/images/hero2.jpg");
+    height: 400px;
+    margin-top: 5px;
+}
+
+.restaurant-hero {
+    background-image: url("/images/hero4.jpg");
+    height: 400px;
+    margin-top: 5px;
+}
+
+.search-box {
+    width: fit-content;
+    margin-left: 2px;
+    margin-right: 20px;
+}
+
+.footer {
+    min-height: 90px;
+    min-width: 100%;
+}
