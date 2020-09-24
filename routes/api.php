@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//create restaurant
+// Route::post('/restaurants', [RestaurantController::class, 'create']);
+//
+// //list all restaurants
+// Route::get('/restaurants', [RestaurantController::class, 'all']);

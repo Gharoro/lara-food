@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Restaurant - Cactus Restaurant') }}
+            {{ __('Edit Restaurant - ') }}{{$restaurant->name}}
         </h2>
     </x-slot>
 
@@ -9,7 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
               <!-- component -->
-              <form id="contact-me" class="w-full mx-auto max-w-9xl bg-white shadow p-8 text-gray-700 ">
+              <form id="contact-me" method="post" enctype="multipart/form-data" action="/update" class="w-full mx-auto max-w-9xl bg-white shadow p-8 text-gray-700 ">
+                  @method('PUT')
+                  @csrf
+                  <input type="hidden" name="id" value="{{$restaurant->id}}">
+
                   <!-- name field -->
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Restaurant Name
@@ -17,7 +21,7 @@
                   <div class="flex flex-wrap mb-6">
                       <div class="relative w-full appearance-none label-floating">
                           <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="name" type="text" value="Cactus Restaurant" placeholder="Your Restaurant Name"required>
+                          id="name" name="name" type="text" value="{{$restaurant->name}}" placeholder="Your Restaurant Name">
                       </div>
                   </div>
                   <!-- address field -->
@@ -27,7 +31,7 @@
                       </label>
                       <div class="relative w-full appearance-none label-floating">
                           <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="name" type="text" name="address" value="42, Victoria Island" placeholder="Address e.g 42, Main Street, Main Island"required>
+                          id="name" type="text" name="address" value="{{$restaurant->address}}" placeholder="Address e.g 42, Main Street, Main Island">
                       </div>
                   </div>
 
@@ -38,7 +42,7 @@
                       </label>
                       <div class="relative w-full appearance-none label-floating">
                           <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="name" type="text" value="Lagos" name="state" placeholder="State"required>
+                          id="name" type="text" value="{{$restaurant->state}}" name="state" placeholder="State">
                       </div>
                   </div>
 
@@ -49,7 +53,7 @@
                       </label>
                       <div class="relative w-full appearance-none label-floating">
                           <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="name" type="text" name="city" value="Victoria Island" placeholder="City"required>
+                          id="name" type="text" name="city" value="{{$restaurant->city}}" placeholder="City">
                       </div>
                   </div>
 
@@ -60,7 +64,7 @@
                       </label>
                       <div class="relative w-full appearance-none label-floating">
                           <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="name" type="file" name="image" required>
+                          id="image" type="file" name="image">
                       </div>
                    </div>
 
@@ -73,6 +77,7 @@
                         </label>
                         <div class="relative">
                            <select name="open_time" class="block appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                             <option selected value="{{$restaurant->open_time}}">{{$restaurant->open_time}}</option>
                              <option value="5am">5 am</option>
                              <option value="6am">6 am</option>
                              <option value="7am">7 am</option>
@@ -102,6 +107,7 @@
                         </label>
                         <div class="relative">
                            <select name="close_time" class="block appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                             <option selected value="{{$restaurant->close_time}}">{{$restaurant->close_time}}</option>
                              <option value="12 noon">12 noon</option>
                              <option value="1pm">1 pm</option>
                              <option value="2pm">2 pm</option>

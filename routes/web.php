@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,17 +13,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// list all restaurants
+Route::get('/', [RestaurantController::class, 'index']);
+// list single restaurant
+Route::get('/restaurant/{id}', [RestaurantController::class, 'show']);
+// create a restaurant
+Route::post('/restaurant', [RestaurantController::class, 'store']);
+// update a restaurant
+Route::put('/update', [RestaurantController::class, 'update']);
+// add a menu to a restaurant
+Route::post('/menu', [RestaurantController::class, 'add_menu']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/search', function () {
     return view('search');
-});
-
-Route::get('/restaurant/{id}', function () {
-    return view('restaurant');
 });
 
 Route::get('/basket', function () {
@@ -46,15 +50,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/placed_orders', function 
     return view('placed_orders');
 })->name('placed_orders');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/my_restaurants', function () {
-    return view('my_restaurants');
-})->name('my_restaurants');
+Route::middleware(['auth:sanctum', 'verified'])->get('/my_restaurants', [RestaurantController::class, 'user_restaurants'])->name('my_restaurants');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/restaurant/{id}/edit', function () {
-    return view('edit_restaurant');
-})->name('edit_restaurant');
+Route::middleware(['auth:sanctum', 'verified'])->get('/restaurant/{id}/edit', [RestaurantController::class, 'edit_view'])->name('edit_restaurant');
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/restaurant/{id}/add_menu', function () {
-    return view('add_menu');
-})->name('add_menu');
+Route::middleware(['auth:sanctum', 'verified'])->get('/restaurant/{id}/add_menu', [RestaurantController::class, 'add_menu_view'])->name('add_menu');
