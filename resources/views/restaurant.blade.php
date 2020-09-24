@@ -16,7 +16,7 @@
 <div class="w-full flex bg-white mb-5 pb-10">
       <!-- main -->
     <main class="w-full">
-      <div class="px-10 grid grid-cols-4 gap-4">
+      <div class="px-2 grid grid-cols-4 gap-4">
         <!-- start cols -->
         @foreach ($menus as $menu)
         <div class="col-span-4 sm:col-span-4 md:col-span-2 lg:col-span-1 xl:col-span-1 flex flex-col items-center">
