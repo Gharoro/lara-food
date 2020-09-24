@@ -33,6 +33,22 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the restaurants for the user.
+     */
+    public function restaurants()
+    {
+        return $this->hasMany('App\Models\Restaurant');
+    }
+
+    /**
+     * Get the orders for the user.
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
