@@ -23,6 +23,10 @@
                                       </th>
                                       <th
                                           class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                          Restaurant
+                                      </th>
+                                      <th
+                                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                           Meal
                                       </th>
                                       <th
@@ -52,6 +56,9 @@
                                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                           <p class="text-gray-900 whitespace-no-wrap">Samantha Hansen</p>
                                           <p><a href="08144466688">08144466688</a></p>
+                                      </td>
+                                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                          <p class="text-gray-900 whitespace-no-wrap">Cactus Restaurant</p>
                                       </td>
                                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                           <div class="flex items-center">
