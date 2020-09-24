@@ -130,11 +130,11 @@
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
 
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                <!-- @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-responsive-nav-link href="/user/api-tokens" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
                     </x-jet-responsive-nav-link>
-                @endif
+                @endif -->
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

@@ -35,7 +35,7 @@ Route::get('/basket', function () {
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('profile.welcome');
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/list_restaurant', function () {
