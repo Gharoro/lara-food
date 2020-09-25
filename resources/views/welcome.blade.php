@@ -24,7 +24,7 @@
       </div>
 
       <!-- six columns -->
-      <h1 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-center font-extrabold mt-3 mb-3">Our Restaurants</h1>
+      <h1 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-5xl text-center font-extrabold mt-3 mb-3">Our Restaurants</h1>
       <div class="flex flex-wrap mb-4 mt-3">
         <!-- card start -->
         @foreach ($restaurants as $restaurant)
@@ -55,8 +55,6 @@
       </div>
       <div class="flex justify-center mt-3">
           {{$restaurants->links()}}
-          <!-- <button class="">&#8592; Previous </button>
-          <button class="">Next &#8594;</button> -->
       </div>
     </section>
 </x-guest-layout>
