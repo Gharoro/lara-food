@@ -12,6 +12,9 @@
   <h4 class="text-3xl sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-center font-medium mt-3 mb-3">No menu listed yet!</h4>
 @else
 <h1 class="text-3xl sm:text-lg md:text-xl lg:text-2xl xl:text-5xl text-center font-extrabold mt-3 mb-3">Our Menu</h1>
+@if (session('success'))
+  <h6>{{session('success')}}</h6>
+@endif
 <!-- component -->
 <div class="w-full flex bg-white mb-5 pb-10">
       <!-- main -->
@@ -40,13 +43,15 @@
                 <div class="text-2xl text-red-600 mt-5 font-bold">
                   N {{$menu->price}}
                   <span style="float: right">
-                    <button title="Add To Bucket" class="p-0 w-12 h-12 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
-                      <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6 inline-block">
-                        <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
-                        C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
-                        C15.952,9,16,9.447,16,10z" />
-                      </svg>
-                    </button>
+                    <a href="{{ url('/add_to_cart') }}/{{$menu->id}}/{{$restaurant->name}}">
+                      <button title="Add To Bucket" class="p-0 w-12 h-12 bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+                        <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6 inline-block">
+                          <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
+                          C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
+                          C15.952,9,16,9.447,16,10z" />
+                        </svg>
+                      </button>
+                    </a>
                   </span>
                 </div>
               </div>

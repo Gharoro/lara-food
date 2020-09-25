@@ -160,4 +160,66 @@ class RestaurantController extends Controller
 
         return redirect()->route('add_menu', ['id' => $input['restaurant_id']])->with('status', 'Menu successfully added!');
     }
+
+    // add menu to cart
+    public function add_to_cart($menu_id, $restaurant)
+    {
+        // find the menu
+        $menu = Menu::find($menu_id);
+        // retrieve the cart
+        $cart = session()->get('cart');
+        // if cart is empty then this the first product
+        if (!$cart) {
+            $cart = [
+                   $menu_id => [
+                       "name" => $menu->name,
+                       "quantity" => 1,
+                       "price" => $menu->price,
+                       "image" => $menu->image,
+                       "restaurant"=> $restaurant,
+                       "restaurant_id" => $menu->restaurant_id
+                   ]
+           ];
+            session()->put('cart', $cart);
+            return redirect()->back()->with('success', 'Menu added to cart successfully!');
+        }
+        // if cart is not empty, check if this product exist then increment quantity
+        if (isset($cart[$menu_id])) {
+            $cart[$menu_id]['quantity']++;
+            session()->put('cart', $cart);
+            return redirect()->back()->with('success', 'Menu added to cart successfully!');
+        }
+        // if item does not exist in cart, then add to cart with quantity = 1
+        $cart[$menu_id] = [
+          "name" => $menu->name,
+          "quantity" => 1,
+          "price" => $menu->price,
+          "image" => $menu->image,
+          "restaurant"=> $restaurant
+        ];
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Menu added to cart successfully!');
+    }
+    // remove from cart
+    public function remove_from_cart(Request $request)
+    {
+        if ($request->id) {
+            $cart = session()->get('cart');
+            if (isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product removed successfully');
+        }
+    }
+    // Checkout
+    public function checkout(Request $request)
+    {
+        $user = Auth::user()->id;
+        return $user;
+        $values = $request->session()->get('cart');
+        // foreach ($values as $value) {
+        //     return $value;
+        // }
+    }
 }

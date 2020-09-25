@@ -23,9 +23,14 @@ Route::post('/restaurant', [RestaurantController::class, 'store']);
 Route::put('/update', [RestaurantController::class, 'update']);
 // add a menu to a restaurant
 Route::post('/menu', [RestaurantController::class, 'add_menu']);
-
-
+// search restaurants
 Route::get('/search', [RestaurantController::class, 'search']);
+// add menu to cart
+Route::get('/add_to_cart/{menu_id}/{restaurant}', [RestaurantController::class, 'add_to_cart']);
+// update cart
+Route::delete('/remove_from_cart', [RestaurantController::class, 'remove_from_cart'])->name('remove_from_cart');
+// Checkout
+Route::get('/checkout', [RestaurantController::class, 'checkout']);
 
 Route::get('/basket', function () {
     return view('basket');
