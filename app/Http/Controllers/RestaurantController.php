@@ -18,6 +18,28 @@ class RestaurantController extends Controller
         return view('welcome')->with('restaurants', $restaurants);
     }
 
+    // search Restaurants
+    public function search(Request $request)
+    {
+        $query = $request->all();
+        if ($query['location'] && !$query['restaurant']) {
+            $results = Restaurant::where('city', 'ilike', '%' . $query['location'] . '%')->get();
+            return view('search')->with('results', $results);
+        }
+        if ($query['restaurant'] && !$query['location']) {
+            $results = Restaurant::where('name', 'ilike', '%' . $query['restaurant'] . '%')->get();
+            return view('search')->with('results', $results);
+        }
+        if ($query['location'] && $query['restaurant']) {
+            $results = Restaurant::where([
+            ['city', 'ilike', '%' . $query['location'] . '%'],
+            ['name', 'ilike', '%' . $query['restaurant'] . '%'],
+            ])->get();
+
+            return view('search')->with('results', $results);
+        }
+    }
+
     // view restaurant details
     public function show($id)
     {

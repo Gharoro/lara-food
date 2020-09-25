@@ -25,9 +25,7 @@ Route::put('/update', [RestaurantController::class, 'update']);
 Route::post('/menu', [RestaurantController::class, 'add_menu']);
 
 
-Route::get('/search', function () {
-    return view('search');
-});
+Route::get('/search', [RestaurantController::class, 'search']);
 
 Route::get('/basket', function () {
     return view('basket');

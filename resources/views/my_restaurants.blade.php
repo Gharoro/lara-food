@@ -76,7 +76,7 @@
                                       </td>
                                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                           <p class="text-gray-900 whitespace-no-wrap">
-                                            {{$restaurant->address}}, {{$restaurant->city}}, {{$restaurant->state}}
+                                            {{$restaurant->address}}, <br/> {{$restaurant->city}}, {{$restaurant->state}}
                                           </p>
                                       </td>
                                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
